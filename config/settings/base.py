@@ -11,26 +11,14 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
-import dj_database_url
-from django.core.exceptions import ImproperlyConfigured
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-def get_environ_variable(var_name):
-    try:
-        return config(var_name)
-    except:
-        message = f'{var_name} not exist in your environment.'
-        raise ImproperlyConfigured(message)
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_environ_variable('SECRET_KEY')
 
 
 # Application definition
@@ -62,10 +50,6 @@ MIDDLEWARE = [
 ]
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
-}
 
 
 ROOT_URLCONF = 'config.urls'
