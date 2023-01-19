@@ -2,3 +2,5 @@ __pycache__
 static
 media
 build
+prod.py
+test.py
