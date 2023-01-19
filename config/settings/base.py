@@ -18,11 +18,19 @@ from django.core.exceptions import ImproperlyConfigured
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+def get_environ_variable(var_name):
+    try:
+        return config(var_name)
+    except:
+        message = f'{var_name} not exist in your environment.'
+        raise ImproperlyConfigured(message)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t2vo#+oo77a%c=@^)2fu!$6&+xnb*d@3mjv_k#ie-k2l(7$w(k'
+SECRET_KEY = get_environ_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
