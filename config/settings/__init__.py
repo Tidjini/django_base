@@ -20,9 +20,13 @@ DATABASES = {
     'default': dj_database_url.config(default=config('DATABASE_URL'))
 }
 
-env = config("ENV")
+environment = config("ENV")
 # choose any of keys for me i set development and production in .env file
-if env.lower() == "development":
+if environment.lower() == "development":
     from .dev import *
-else:
+elif environment.lower() == "test":
+    from .test import *
+elif environment.lower() == "production":
     from .prod import *
+else:
+    from .base import *
