@@ -22,11 +22,9 @@ DATABASES = {
 
 environment = config("ENV")
 # choose any of keys for me i set development and production in .env file
-if environment.lower() == "development":
-    from .dev import *
-elif environment.lower() == "test":
+if environment.lower() == "test":
     from .test import *
 elif environment.lower() == "production":
     from .prod import *
 else:
-    from .base import *
+    from .dev import *
