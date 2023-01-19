@@ -33,9 +33,6 @@ def get_environ_variable(var_name):
 SECRET_KEY = get_environ_variable('SECRET_KEY')
 
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
